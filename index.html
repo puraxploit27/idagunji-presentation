@@ -897,6 +897,7 @@
                 this.slidesGrid = document.getElementById('slidesGrid');
                 this.totalSlides = 7;
                 this.currentSlide = 0;
+                this.isGalleryScrolling = false;
                 
                 this.init();
             }
@@ -924,20 +925,66 @@
                 document.getElementById('prevBtn').onclick = () => this.prevSlide();
                 document.getElementById('nextBtn').onclick = () => this.nextSlide();
                 
+                // Keyboard navigation
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowRight' || e.key === ' ') this.nextSlide();
                     if (e.key === 'ArrowLeft') this.prevSlide();
                     if (e.key >= '1' && e.key <= '7') this.goToSlide(parseInt(e.key) - 1);
                 });
                 
-                let wheelTimeout;
+                // Mouse wheel navigation - only outside gallery
                 document.addEventListener('wheel', (e) => {
-                    clearTimeout(wheelTimeout);
-                    wheelTimeout = setTimeout(() => {
-                        if (e.deltaY > 0) this.nextSlide();
-                        else if (e.deltaY < 0) this.prevSlide();
-                    }, 50);
-                });
+                    // Check if we're scrolling in a gallery
+                    const isInGallery = e.target.closest('.gallery-grid') || 
+                                       e.target.closest('.gallery-item');
+                    
+                    // If in gallery, don't change slides - let it scroll naturally
+                    if (isInGallery) {
+                        return;
+                    }
+                    
+                    // Prevent default to avoid page scrolling
+                    e.preventDefault();
+                    
+                    // Change slide based on wheel direction
+                    if (e.deltaY > 0) {
+                        this.nextSlide();
+                    } else if (e.deltaY < 0) {
+                        this.prevSlide();
+                    }
+                }, { passive: false });
+                
+                // Touch swipe for mobile/touch devices
+                let touchStartX = 0;
+                let touchStartY = 0;
+                
+                document.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                document.addEventListener('touchend', (e) => {
+                    const touchEndX = e.changedTouches[0].clientX;
+                    const touchEndY = e.changedTouches[0].clientY;
+                    
+                    // Check if it's a horizontal swipe (not vertical scroll)
+                    const diffX = touchStartX - touchEndX;
+                    const diffY = touchStartY - touchEndY;
+                    
+                    // If vertical scroll is more than horizontal, it's a scroll, not swipe
+                    if (Math.abs(diffY) > Math.abs(diffX)) {
+                        return; // It's a vertical scroll, don't change slides
+                    }
+                    
+                    // Horizontal swipe - change slides
+                    if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                        if (diffX > 0) {
+                            this.nextSlide(); // Swipe left
+                        } else {
+                            this.prevSlide(); // Swipe right
+                        }
+                    }
+                }, { passive: true });
             }
             
             goToSlide(index) {
@@ -987,65 +1034,43 @@
                 
                 // Gallery 1 (1-12)
                 for (let i = 1; i <= 12; i++) {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.onclick = () => this.viewImage(i);
-                    
-                    const img = document.createElement('img');
-                    img.src = `gallery${i}.jpg`;
-                    img.alt = `Project ${i}`;
-                    img.onerror = function() {
-                        // If image doesn't load, show placeholder
-                        this.style.display = 'none';
-                        item.innerHTML = `<div class="gallery-number">${i}</div>`;
-                        item.style.background = 'linear-gradient(135deg, #3C2818, #2C1810)';
-                        item.style.display = 'flex';
-                        item.style.alignItems = 'center';
-                        item.style.justifyContent = 'center';
-                        item.style.color = 'var(--secondary)';
-                        item.style.fontSize = '16px';
-                        item.style.fontWeight = 'bold';
-                    };
-                    
-                    const number = document.createElement('div');
-                    number.className = 'gallery-number';
-                    number.textContent = i.toString().padStart(2, '0');
-                    
-                    item.appendChild(img);
-                    item.appendChild(number);
-                    gallery1.appendChild(item);
+                    this.createGalleryItem(gallery1, i);
                 }
                 
                 // Gallery 2 (13-21)
                 for (let i = 13; i <= 21; i++) {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.onclick = () => this.viewImage(i);
-                    
-                    const img = document.createElement('img');
-                    img.src = `gallery${i}.jpg`;
-                    img.alt = `Project ${i}`;
-                    img.onerror = function() {
-                        // If image doesn't load, show placeholder
-                        this.style.display = 'none';
-                        item.innerHTML = `<div class="gallery-number">${i}</div>`;
-                        item.style.background = 'linear-gradient(135deg, #3C2818, #2C1810)';
-                        item.style.display = 'flex';
-                        item.style.alignItems = 'center';
-                        item.style.justifyContent = 'center';
-                        item.style.color = 'var(--secondary)';
-                        item.style.fontSize = '16px';
-                        item.style.fontWeight = 'bold';
-                    };
-                    
-                    const number = document.createElement('div');
-                    number.className = 'gallery-number';
-                    number.textContent = i.toString().padStart(2, '0');
-                    
-                    item.appendChild(img);
-                    item.appendChild(number);
-                    gallery2.appendChild(item);
+                    this.createGalleryItem(gallery2, i);
                 }
+            }
+            
+            createGalleryItem(container, photoNumber) {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => this.viewImage(photoNumber);
+                
+                const img = document.createElement('img');
+                img.src = `gallery${photoNumber}.jpg`;
+                img.alt = `Project ${photoNumber}`;
+                img.onerror = function() {
+                    // If image doesn't load, show placeholder
+                    this.style.display = 'none';
+                    item.innerHTML = `<div class="gallery-number">${photoNumber}</div>`;
+                    item.style.background = 'linear-gradient(135deg, #3C2818, #2C1810)';
+                    item.style.display = 'flex';
+                    item.style.alignItems = 'center';
+                    item.style.justifyContent = 'center';
+                    item.style.color = 'var(--secondary)';
+                    item.style.fontSize = '16px';
+                    item.style.fontWeight = 'bold';
+                };
+                
+                const number = document.createElement('div');
+                number.className = 'gallery-number';
+                number.textContent = photoNumber.toString().padStart(2, '0');
+                
+                item.appendChild(img);
+                item.appendChild(number);
+                container.appendChild(item);
             }
             
             viewImage(photoNumber) {
@@ -1059,25 +1084,12 @@
                 };
                 
                 imageViewer.style.display = 'flex';
-                
-                // Prevent slide navigation while image viewer is open
-                document.addEventListener('keydown', this.preventSlideNavigation);
-            }
-            
-            preventSlideNavigation(e) {
-                if (document.getElementById('imageViewer').style.display === 'flex') {
-                    e.stopPropagation();
-                    if (e.key === 'Escape') {
-                        closeImageViewer();
-                    }
-                }
             }
         }
         
         // Image Viewer Functions
         function closeImageViewer() {
             document.getElementById('imageViewer').style.display = 'none';
-            document.removeEventListener('keydown', presentation.preventSlideNavigation);
         }
         
         // PDF Functions
@@ -1092,7 +1104,7 @@
             document.getElementById('pdfEmbed').src = '';
         }
         
-        // Close PDF on ESC or click outside
+        // Close PDF/Image viewers on ESC or click outside
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (document.getElementById('pdfViewer').style.display === 'flex') {
@@ -1111,6 +1123,14 @@
         document.getElementById('imageViewer').addEventListener('click', function(e) {
             if (e.target === this) closeImageViewer();
         });
+        
+        // Prevent default touch behavior for whole document
+        document.addEventListener('touchmove', (e) => {
+            // Only prevent default if not scrolling in gallery
+            if (!e.target.closest('.gallery-grid')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
         
         // Initialize
         let presentation;
