@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Idagunji Enterprises | Tablet Presentation</title>
+    <title>Idagunji Enterprises | Laptop Presentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -30,7 +30,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -46,30 +45,27 @@
             height: 100vh;
             width: 100vw;
             overflow: hidden;
-            position: fixed;
-            touch-action: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Tablet Optimized Container */
+        /* Laptop Optimized Container */
         .presentation-container {
             position: relative;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            perspective: 2000px;
             background: radial-gradient(ellipse at top, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
                         radial-gradient(ellipse at bottom, rgba(210, 180, 140, 0.05) 0%, transparent 50%);
         }
 
-        /* Slide Grid - Tablet Optimized */
+        /* Slides Grid - Laptop Optimized */
         .slides-grid {
             position: absolute;
             width: 100%;
             height: 100%;
             display: grid;
-            grid-template-columns: repeat(8, 100%);
+            grid-template-columns: repeat(7, 100%);
             grid-template-rows: 100%;
             will-change: transform;
             transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -79,7 +75,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            padding: 2rem;
+            padding: 3rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -91,9 +87,9 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Content Styling */
+        /* Content Styling for Laptop */
         .content-wrapper {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
             height: 100%;
             display: flex;
@@ -106,14 +102,14 @@
 
         .slide-number {
             position: absolute;
-            top: 2rem;
-            left: 2rem;
-            font-size: 1.2rem;
+            top: 3rem;
+            left: 4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--secondary);
             background: rgba(210, 180, 140, 0.1);
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -122,10 +118,10 @@
         }
 
         .slide-title {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             background: linear-gradient(45deg, var(--secondary), var(--primary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -142,18 +138,18 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 150px;
             height: 4px;
             background: linear-gradient(90deg, var(--secondary), var(--primary));
             border-radius: 2px;
         }
 
         .slide-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--gray);
             text-align: center;
-            margin-bottom: 2rem;
-            max-width: 700px;
+            margin-bottom: 2.5rem;
+            max-width: 900px;
             font-weight: 300;
             line-height: 1.6;
         }
@@ -164,7 +160,7 @@
         }
 
         .hero-logo {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 900;
             margin-bottom: 0.5rem;
             background: linear-gradient(45deg, var(--secondary), var(--primary));
@@ -175,32 +171,32 @@
         }
 
         .hero-tagline {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             font-weight: 300;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
         }
 
-        /* Services Grid */
-        .services-tablet-grid {
+        /* Services Grid for Laptop */
+        .services-laptop-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 2rem;
+            margin-top: 3rem;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
         }
 
         .service-card {
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border: 1px solid rgba(210, 180, 140, 0.15);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: var(--radius-md);
             text-align: center;
             transition: var(--transition);
-            height: 240px;
+            height: 280px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -214,11 +210,11 @@
         }
 
         .service-icon {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             color: var(--secondary);
-            margin-bottom: 1.2rem;
-            width: 80px;
-            height: 80px;
+            margin-bottom: 1.5rem;
+            width: 90px;
+            height: 90px;
             background: rgba(210, 180, 140, 0.1);
             border-radius: 50%;
             display: flex;
@@ -227,30 +223,30 @@
         }
 
         .service-name {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             color: var(--light);
         }
 
         .service-desc {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             color: var(--gray);
             line-height: 1.5;
         }
 
-        /* Gallery Grid - 3 Columns */
-        .gallery-tablet-container {
+        /* Gallery for Laptop - 4 Columns */
+        .gallery-laptop-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1400px;
         }
 
-        .gallery-item-tablet {
-            height: 180px;
+        .gallery-item-laptop {
+            height: 220px;
             border-radius: var(--radius-md);
             overflow: hidden;
             position: relative;
@@ -262,13 +258,13 @@
             background-repeat: no-repeat;
         }
 
-        .gallery-item-tablet:hover {
+        .gallery-item-laptop:hover {
             border-color: var(--secondary);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .gallery-overlay-tablet {
+        .gallery-overlay-laptop {
             position: absolute;
             top: 0;
             left: 0;
@@ -279,50 +275,44 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            padding: 1.2rem;
+            padding: 1.5rem;
             opacity: 1;
             transition: var(--transition);
         }
 
-        .gallery-item-tablet:hover .gallery-overlay-tablet {
+        .gallery-item-laptop:hover .gallery-overlay-laptop {
             background: linear-gradient(0deg, rgba(44, 24, 16, 0.95) 0%, transparent 60%);
         }
 
         .gallery-number {
             color: var(--secondary);
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
         }
 
         /* Product Brochures Section */
         .brochures-section {
-            margin-top: 2rem;
+            margin-top: 3rem;
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
             text-align: center;
         }
 
         .brochure-buttons-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .brochure-buttons-container {
-                grid-template-columns: repeat(4, 1fr);
-            }
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .brochure-btn {
             background: linear-gradient(145deg, rgba(139, 69, 19, 0.15), rgba(210, 180, 140, 0.1));
             border: 2px solid var(--secondary);
             color: var(--light);
-            padding: 1.5rem 1rem;
+            padding: 2rem 1.5rem;
             border-radius: var(--radius-md);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -330,41 +320,41 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 0.8rem;
-            height: 160px;
+            gap: 1rem;
+            height: 180px;
         }
 
         .brochure-btn:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             background: linear-gradient(145deg, rgba(139, 69, 19, 0.25), rgba(210, 180, 140, 0.15));
             border-color: var(--primary);
             box-shadow: var(--shadow-primary);
         }
 
         .brochure-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--secondary);
         }
 
         .brochure-text {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             line-height: 1.3;
         }
 
-        /* Stats */
-        .stats-tablet-grid {
+        /* Stats for Laptop */
+        .stats-laptop-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 2rem;
+            gap: 3rem;
+            margin-top: 3rem;
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
         }
 
         .stat-card {
             text-align: center;
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 2rem;
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border-radius: var(--radius-md);
             border: 1px solid rgba(210, 180, 140, 0.15);
@@ -377,7 +367,7 @@
         }
 
         .stat-number {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
             color: var(--secondary);
             line-height: 1;
@@ -385,35 +375,35 @@
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--gray);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
         }
 
-        /* Contact Page */
+        /* Contact Page for Laptop */
         .contact-page {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 2.5rem;
+            margin-top: 3rem;
             width: 100%;
         }
 
         .contact-card {
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border: 1px solid rgba(210, 180, 140, 0.15);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
-            gap: 1.8rem;
+            gap: 2rem;
             transition: var(--transition);
         }
 
@@ -424,8 +414,8 @@
         }
 
         .contact-icon-wrapper {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
@@ -435,27 +425,27 @@
         }
 
         .contact-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--light);
         }
 
         .contact-details h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.6rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
             color: var(--secondary);
         }
 
         .contact-details p {
             color: var(--gray);
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1.5;
         }
 
         .contact-map {
-            margin-top: 3rem;
+            margin-top: 4rem;
             width: 100%;
-            height: 300px;
+            height: 350px;
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border-radius: var(--radius-md);
             border: 1px solid rgba(210, 180, 140, 0.15);
@@ -463,12 +453,12 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            gap: 1rem;
-            padding: 2rem;
+            gap: 1.5rem;
+            padding: 3rem;
         }
 
         .map-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--secondary);
         }
 
@@ -479,18 +469,18 @@
 
         .map-text h3 {
             color: var(--secondary);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
         }
 
         /* Slide Progress */
-        .tablet-progress {
+        .laptop-progress {
             position: fixed;
-            top: 2rem;
+            bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 350px;
-            height: 5px;
+            width: 400px;
+            height: 6px;
             background: rgba(210, 180, 140, 0.1);
             border-radius: 3px;
             z-index: 100;
@@ -504,21 +494,60 @@
             transition: width 0.6s ease;
         }
 
-        /* Slide Dots */
-        .tablet-dots {
+        /* Navigation Controls */
+        .laptop-nav {
             position: fixed;
-            right: 2rem;
             top: 50%;
+            width: 100%;
             transform: translateY(-50%);
             display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .nav-btn {
+            pointer-events: all;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(210, 180, 140, 0.15);
+            border: 2px solid var(--secondary);
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(210, 180, 140, 0.3);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Slide Dots for Laptop */
+        .laptop-dots {
+            position: fixed;
+            bottom: 6rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1.5rem;
             z-index: 100;
         }
 
         .dot {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: rgba(210, 180, 140, 0.3);
             border: 2px solid transparent;
@@ -531,12 +560,16 @@
             transform: scale(1.4);
         }
 
-        /* Swipe Hint */
-        .swipe-hint {
+        .dot:hover {
+            background: var(--secondary);
+            transform: scale(1.2);
+        }
+
+        /* Navigation Hint */
+        .nav-hint {
             position: fixed;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 2rem;
+            right: 2rem;
             color: var(--secondary);
             font-size: 1rem;
             display: flex;
@@ -548,13 +581,22 @@
             padding: 0.8rem 1.5rem;
             border-radius: 30px;
             border: 1px solid rgba(210, 180, 140, 0.3);
-            animation: pulse 2s infinite;
             pointer-events: none;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.8; }
+        /* Slide Counter */
+        .slide-counter {
+            position: fixed;
+            top: 3rem;
+            right: 4rem;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: rgba(210, 180, 140, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            border: 2px solid rgba(210, 180, 140, 0.3);
+            z-index: 100;
         }
 
         /* PDF Viewer Overlay */
@@ -570,12 +612,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 3rem;
         }
 
         .pdf-viewer-container {
             width: 90%;
-            height: 80%;
+            height: 85%;
             background: var(--light-bg);
             border-radius: var(--radius-lg);
             overflow: hidden;
@@ -585,7 +627,7 @@
         }
 
         .pdf-viewer-header {
-            padding: 1.5rem 2rem;
+            padding: 1.8rem 2.5rem;
             background: var(--primary);
             color: var(--light);
             display: flex;
@@ -594,7 +636,7 @@
         }
 
         .pdf-viewer-title {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 600;
         }
 
@@ -602,10 +644,10 @@
             background: none;
             border: none;
             color: var(--light);
-            font-size: 1.8rem;
+            font-size: 2rem;
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -633,28 +675,52 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: var(--light);
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.2rem;
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem;
+            line-height: 1.4;
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 2rem 3rem;
+            }
+            
+            .slide-title {
+                font-size: 3rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .services-laptop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-laptop-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .slide-title {
                 font-size: 2.5rem;
             }
             
             .hero-logo {
-                font-size: 3.5rem;
+                font-size: 4rem;
             }
             
-            .services-tablet-grid,
-            .gallery-tablet-container {
+            .services-laptop-grid,
+            .gallery-laptop-container {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -665,30 +731,34 @@
             .brochure-buttons-container {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .laptop-progress {
+                width: 300px;
+            }
         }
 
-        @media (max-height: 700px) {
+        @media (max-height: 800px) {
             .slide {
-                padding: 1.5rem;
+                padding: 2rem 3rem;
             }
             
             .slide-title {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-            }
-            
-            .slide-subtitle {
-                font-size: 1.1rem;
+                font-size: 2.8rem;
                 margin-bottom: 1.5rem;
             }
             
-            .gallery-item-tablet {
-                height: 150px;
+            .slide-subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+            }
+            
+            .gallery-item-laptop {
+                height: 180px;
             }
             
             .service-card {
-                height: 200px;
-                padding: 1.5rem;
+                height: 240px;
+                padding: 2rem;
             }
         }
     </style>
@@ -697,18 +767,31 @@
     <!-- Main Presentation Container -->
     <div class="presentation-container" id="presentationContainer">
         <!-- Slide Progress Bar -->
-        <div class="tablet-progress">
+        <div class="laptop-progress">
             <div class="progress-fill" id="progressFill"></div>
         </div>
 
         <!-- Slide Dots -->
-        <div class="tablet-dots" id="tabletDots"></div>
+        <div class="laptop-dots" id="laptopDots"></div>
 
-        <!-- Swipe Hint -->
-        <div class="swipe-hint" id="swipeHint">
-            <i class="fas fa-hand-point-up"></i>
-            <span>Swipe left/right to navigate</span>
+        <!-- Navigation Controls -->
+        <div class="laptop-nav">
+            <button class="nav-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+
+        <!-- Navigation Hint -->
+        <div class="nav-hint" id="navHint">
+            <i class="fas fa-arrows-alt-h"></i>
+            <span>Use ← → keys or click arrows</span>
+        </div>
+
+        <!-- Slide Counter -->
+        <div class="slide-counter" id="slideCounter">01 / 07</div>
 
         <!-- Slides Grid -->
         <div class="slides-grid" id="slidesGrid">
@@ -722,7 +805,7 @@
                         <h2 class="slide-title">ARCHITECTURAL EXCELLENCE</h2>
                         <p class="slide-subtitle">Premium ACP • Structural Glazing • Aluminum • uPVC • Glass Solutions</p>
                         
-                        <div class="stats-tablet-grid">
+                        <div class="stats-laptop-grid">
                             <div class="stat-card">
                                 <div class="stat-number">15</div>
                                 <div class="stat-label">Years Experience</div>
@@ -747,7 +830,7 @@
                     <h1 class="slide-title">OUR SERVICES</h1>
                     <p class="slide-subtitle">Comprehensive architectural solutions with premium quality and precision engineering</p>
                     
-                    <div class="services-tablet-grid">
+                    <div class="services-laptop-grid">
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-building"></i>
@@ -799,48 +882,35 @@
                 </div>
             </div>
 
-            <!-- Slide 3: Gallery Page 1 (1-9) -->
+            <!-- Slide 3: Gallery Page 1 (1-12) -->
             <div class="slide" id="slide3">
                 <div class="slide-number">03</div>
                 <div class="content-wrapper">
                     <h1 class="slide-title">PROJECT GALLERY</h1>
-                    <p class="slide-subtitle">Photos 1-9 • Showcasing our architectural excellence</p>
+                    <p class="slide-subtitle">Photos 1-12 • Showcasing our architectural excellence</p>
                     
-                    <div class="gallery-tablet-container" id="galleryPage1">
-                        <!-- Photos 1-9 will be loaded here -->
+                    <div class="gallery-laptop-container" id="galleryPage1">
+                        <!-- Photos 1-12 will be loaded here -->
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4: Gallery Page 2 (10-18) -->
+            <!-- Slide 4: Gallery Page 2 (13-21) -->
             <div class="slide" id="slide4">
                 <div class="slide-number">04</div>
                 <div class="content-wrapper">
                     <h1 class="slide-title">PROJECT GALLERY</h1>
-                    <p class="slide-subtitle">Photos 10-18 • Continued showcase of our work</p>
+                    <p class="slide-subtitle">Photos 13-21 • Continued showcase of our work</p>
                     
-                    <div class="gallery-tablet-container" id="galleryPage2">
-                        <!-- Photos 10-18 will be loaded here -->
+                    <div class="gallery-laptop-container" id="galleryPage2">
+                        <!-- Photos 13-21 will be loaded here -->
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 5: Gallery Page 3 (19-21) -->
+            <!-- Slide 5: Product Brochures -->
             <div class="slide" id="slide5">
                 <div class="slide-number">05</div>
-                <div class="content-wrapper">
-                    <h1 class="slide-title">PROJECT GALLERY</h1>
-                    <p class="slide-subtitle">Photos 19-21 • Final showcase of our projects</p>
-                    
-                    <div class="gallery-tablet-container" id="galleryPage3">
-                        <!-- Photos 19-21 will be loaded here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 6: Product Brochures -->
-            <div class="slide" id="slide6">
-                <div class="slide-number">06</div>
                 <div class="content-wrapper">
                     <h1 class="slide-title">PRODUCT BROCHURES</h1>
                     <p class="slide-subtitle">View detailed product catalogs and technical specifications</p>
@@ -849,31 +919,31 @@
                         <div class="brochure-buttons-container">
                             <button class="brochure-btn" onclick="viewPDF('brochure1.pdf', 'ACP Sheets Catalog')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">ACP Sheets</span>
+                                <span class="brochure-text">ACP Sheets Catalog</span>
                             </button>
                             
                             <button class="brochure-btn" onclick="viewPDF('brochure2.pdf', 'Glass Designs Portfolio')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">Glass Designs</span>
+                                <span class="brochure-text">Glass Designs Portfolio</span>
                             </button>
                             
                             <button class="brochure-btn" onclick="viewPDF('brochure3.pdf', 'Window Models Catalog')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">Window Models</span>
+                                <span class="brochure-text">Window Models Catalog</span>
                             </button>
                             
                             <button class="brochure-btn" onclick="viewPDF('brochure4.pdf', 'Premium Product Catalog')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">Premium Catalog</span>
+                                <span class="brochure-text">Premium Product Catalog</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 7: Contact Us -->
-            <div class="slide" id="slide7">
-                <div class="slide-number">07</div>
+            <!-- Slide 6: Contact Us -->
+            <div class="slide" id="slide6">
+                <div class="slide-number">06</div>
                 <div class="content-wrapper">
                     <div class="contact-page">
                         <h1 class="slide-title">CONTACT US</h1>
@@ -933,14 +1003,56 @@
                                 <p>Commercial & Residential Projects</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Thank You -->
+            <div class="slide" id="slide7">
+                <div class="slide-number">07</div>
+                <div class="content-wrapper">
+                    <div class="hero-content">
+                        <h1 class="hero-logo" style="font-size: 4.5rem;">THANK YOU</h1>
+                        <div class="hero-tagline" style="font-size: 1.8rem; margin-bottom: 2rem;">For Your Time</div>
                         
-                        <div style="margin-top: 3rem; text-align: center;">
-                            <p style="font-size: 1.2rem; color: var(--secondary); font-weight: 600;">
-                                Thank you for viewing our presentation
+                        <h2 class="slide-title" style="margin-bottom: 3rem;">IDAGUNJI ENTERPRISES</h2>
+                        
+                        <div style="text-align: center; max-width: 800px;">
+                            <p style="font-size: 1.5rem; color: var(--secondary); margin-bottom: 2rem; line-height: 1.6;">
+                                Your trusted partner for premium architectural solutions
                             </p>
-                            <p style="font-size: 1.4rem; color: var(--light); font-weight: 700; margin-top: 1rem;">
-                                IDAGUNJI ENTERPRISES
-                            </p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;">
+                                <div>
+                                    <div style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <p style="font-weight: 600; color: var(--light);">Quality Excellence</p>
+                                </div>
+                                
+                                <div>
+                                    <div style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <p style="font-weight: 600; color: var(--light);">Customer Commitment</p>
+                                </div>
+                                
+                                <div>
+                                    <div style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <p style="font-weight: 600; color: var(--light);">Timely Delivery</p>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 2px solid rgba(210, 180, 140, 0.3);">
+                                <p style="font-size: 1.8rem; color: var(--light); font-weight: 700; margin-bottom: 1rem;">
+                                    +91 99000 99144
+                                </p>
+                                <p style="font-size: 1.2rem; color: var(--gray);">
+                                    info@idagunjienterprises.com
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -964,17 +1076,14 @@
     </div>
 
     <script>
-        // Main Presentation System with Swipe Only
-        class TabletPresentation {
+        // Main Presentation System for Laptop
+        class LaptopPresentation {
             constructor() {
                 this.slidesGrid = document.getElementById('slidesGrid');
                 this.slides = document.querySelectorAll('.slide');
                 this.totalSlides = this.slides.length;
                 this.currentSlide = 0;
                 this.isAnimating = false;
-                this.touchStartX = 0;
-                this.touchEndX = 0;
-                this.swipeThreshold = 50;
                 
                 this.init();
             }
@@ -983,12 +1092,13 @@
                 this.createSlideIndicators();
                 this.setupEventListeners();
                 this.updateProgress();
+                this.updateCounter();
                 this.loadGalleryImages();
-                this.hideSwipeHint();
+                this.hideNavHint();
             }
             
             createSlideIndicators() {
-                const dotsContainer = document.getElementById('tabletDots');
+                const dotsContainer = document.getElementById('laptopDots');
                 
                 for (let i = 0; i < this.totalSlides; i++) {
                     const dot = document.createElement('div');
@@ -1006,60 +1116,84 @@
             }
             
             setupEventListeners() {
-                // Touch gestures for swipe navigation
+                // Navigation buttons
+                document.getElementById('prevBtn').addEventListener('click', () => {
+                    this.prevSlide();
+                });
+                
+                document.getElementById('nextBtn').addEventListener('click', () => {
+                    this.nextSlide();
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case 'ArrowRight':
+                        case ' ':
+                        case 'PageDown':
+                            e.preventDefault();
+                            this.nextSlide();
+                            break;
+                        case 'ArrowLeft':
+                        case 'PageUp':
+                            e.preventDefault();
+                            this.prevSlide();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.goToSlide(0);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.goToSlide(this.totalSlides - 1);
+                            break;
+                        case '1':
+                        case '2':
+                        case '3':
+                        case '4':
+                        case '5':
+                        case '6':
+                        case '7':
+                            e.preventDefault();
+                            const slideNum = parseInt(e.key) - 1;
+                            if (slideNum < this.totalSlides) {
+                                this.goToSlide(slideNum);
+                            }
+                            break;
+                    }
+                });
+                
+                // Mouse wheel navigation
+                let wheelTimeout;
+                document.addEventListener('wheel', (e) => {
+                    clearTimeout(wheelTimeout);
+                    wheelTimeout = setTimeout(() => {
+                        if (e.deltaY > 0) {
+                            this.nextSlide();
+                        } else if (e.deltaY < 0) {
+                            this.prevSlide();
+                        }
+                    }, 50);
+                }, { passive: true });
+                
+                // Touch gestures for touchscreen laptops
+                let touchStartY = 0;
                 document.addEventListener('touchstart', (e) => {
-                    this.touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.touches[0].clientY;
                 }, { passive: true });
                 
                 document.addEventListener('touchend', (e) => {
-                    this.touchEndX = e.changedTouches[0].screenX;
-                    this.handleSwipe();
-                }, { passive: true });
-                
-                // Mouse drag for desktop testing
-                let mouseStartX = 0;
-                let mouseEndX = 0;
-                
-                document.addEventListener('mousedown', (e) => {
-                    mouseStartX = e.clientX;
-                });
-                
-                document.addEventListener('mouseup', (e) => {
-                    mouseEndX = e.clientX;
-                    const diff = mouseEndX - mouseStartX;
+                    const touchEndY = e.changedTouches[0].clientY;
+                    const diff = touchStartY - touchEndY;
+                    
                     if (Math.abs(diff) > 50) {
                         if (diff > 0) {
-                            this.prevSlide();
-                        } else {
                             this.nextSlide();
+                        } else {
+                            this.prevSlide();
                         }
                     }
-                });
-                
-                // Keyboard navigation (optional)
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowRight' || e.key === ' ') {
-                        e.preventDefault();
-                        this.nextSlide();
-                    } else if (e.key === 'ArrowLeft') {
-                        e.preventDefault();
-                        this.prevSlide();
-                    } else if (e.key === 'Home') {
-                        e.preventDefault();
-                        this.goToSlide(0);
-                    } else if (e.key === 'End') {
-                        e.preventDefault();
-                        this.goToSlide(this.totalSlides - 1);
-                    }
-                });
-            }
-            
-            handleSwipe() {
-                if (this.touchEndX < this.touchStartX - this.swipeThreshold) {
-                    this.nextSlide();
-                } else if (this.touchEndX > this.touchStartX + this.swipeThreshold) {
-                    this.prevSlide();
-                }
+                }, { passive: true });
             }
             
             goToSlide(index) {
@@ -1072,6 +1206,7 @@
                 
                 this.updateIndicators();
                 this.updateProgress();
+                this.updateCounter();
                 
                 setTimeout(() => {
                     this.isAnimating = false;
@@ -1103,6 +1238,13 @@
                 progressFill.style.width = `${progress}%`;
             }
             
+            updateCounter() {
+                const counter = document.getElementById('slideCounter');
+                const current = (this.currentSlide + 1).toString().padStart(2, '0');
+                const total = this.totalSlides.toString().padStart(2, '0');
+                counter.textContent = `${current} / ${total}`;
+            }
+            
             loadGalleryImages() {
                 // Gallery descriptions
                 const descriptions = [
@@ -1129,33 +1271,27 @@
                     "Final Project Delivery"
                 ];
                 
-                // Load gallery page 1 (photos 1-9)
+                // Load gallery page 1 (photos 1-12)
                 const galleryPage1 = document.getElementById('galleryPage1');
-                for (let i = 1; i <= 9; i++) {
+                for (let i = 1; i <= 12; i++) {
                     this.createGalleryCard(galleryPage1, i, descriptions[i-1]);
                 }
                 
-                // Load gallery page 2 (photos 10-18)
+                // Load gallery page 2 (photos 13-21)
                 const galleryPage2 = document.getElementById('galleryPage2');
-                for (let i = 10; i <= 18; i++) {
-                    this.createGalleryCard(galleryPage2, i, descriptions[i-1]);
-                }
-                
-                // Load gallery page 3 (photos 19-21)
-                const galleryPage3 = document.getElementById('galleryPage3');
-                for (let i = 19; i <= 21; i++) {
-                    this.createGalleryCard(galleryPage3, i, descriptions[i-1]);
+                for (let i = 13; i <= 21; i++) {
+                    this.createGalleryCard(galleryPage2, i, descriptions[i-1] || `Project ${i}`);
                 }
             }
             
             createGalleryCard(container, photoNumber, description) {
                 const card = document.createElement('div');
-                card.className = 'gallery-item-tablet';
+                card.className = 'gallery-item-laptop';
                 card.style.backgroundImage = `url('gallery${photoNumber}.jpg')`;
-                card.onclick = () => viewGalleryImage(photoNumber);
+                card.onclick = () => viewGalleryImage(photoNumber, description);
                 
                 const overlay = document.createElement('div');
-                overlay.className = 'gallery-overlay-tablet';
+                overlay.className = 'gallery-overlay-laptop';
                 overlay.innerHTML = `
                     <div class="gallery-number">Project ${photoNumber}</div>
                 `;
@@ -1170,7 +1306,7 @@
                     card.innerHTML = `
                         <div class="gallery-placeholder">
                             Project ${photoNumber}<br>
-                            <small>${description}</small>
+                            <small style="font-weight: normal; margin-top: 0.5rem; font-size: 1rem;">${description}</small>
                         </div>
                         ${card.innerHTML}
                     `;
@@ -1178,22 +1314,21 @@
                 img.src = `gallery${photoNumber}.jpg`;
             }
             
-            hideSwipeHint() {
-                // Hide swipe hint after 8 seconds
+            hideNavHint() {
+                // Hide navigation hint after 10 seconds
                 setTimeout(() => {
-                    const hint = document.getElementById('swipeHint');
+                    const hint = document.getElementById('navHint');
                     hint.style.opacity = '0';
                     setTimeout(() => {
                         hint.style.display = 'none';
                     }, 1000);
-                }, 8000);
+                }, 10000);
             }
         }
         
         // Gallery Image View
-        function viewGalleryImage(photoNumber) {
-            // For demo, we'll show an alert
-            alert(`Viewing Project ${photoNumber}\n\nIn production, you would open a full-screen image viewer.\nImage: gallery${photoNumber}.jpg`);
+        function viewGalleryImage(photoNumber, description) {
+            alert(`Viewing Project ${photoNumber}\n\n${description}\n\nImage: gallery${photoNumber}.jpg`);
         }
         
         // PDF Viewer Functions
@@ -1201,16 +1336,24 @@
             document.getElementById('pdfTitle').textContent = title;
             document.getElementById('pdfEmbed').src = pdfName;
             document.getElementById('pdfViewer').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
         
         function closePDFViewer() {
             document.getElementById('pdfViewer').style.display = 'none';
             document.getElementById('pdfEmbed').src = '';
+            document.body.style.overflow = 'hidden';
         }
         
-        // Close PDF viewer when clicking outside
+        // Close PDF viewer when clicking outside or pressing ESC
         document.getElementById('pdfViewer').addEventListener('click', function(e) {
             if (e.target === this) {
+                closePDFViewer();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('pdfViewer').style.display === 'flex') {
                 closePDFViewer();
             }
         });
@@ -1218,14 +1361,16 @@
         // Initialize presentation
         let presentation;
         document.addEventListener('DOMContentLoaded', () => {
-            presentation = new TabletPresentation();
+            presentation = new LaptopPresentation();
             window.presentation = presentation;
         });
         
-        // Prevent context menu
+        // Prevent context menu on images
         document.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            return false;
+            if (e.target.tagName === 'IMG' || e.target.className.includes('gallery')) {
+                e.preventDefault();
+                return false;
+            }
         });
     </script>
 </body>
