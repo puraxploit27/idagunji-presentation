@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Idagunji Enterprises | Tablet Presentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00c6a7;
+            --primary-dark: #00a88c;
+            --primary-light: rgba(0, 198, 167, 0.1);
+            --secondary: #4d5dfb;
+            --dark: #0b0f14;
+            --darker: #070a0e;
+            --light: #ffffff;
+            --gray: #a0aec0;
+            --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-primary: 0 0 30px rgba(0, 198, 167, 0.3);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0b0f14 0%, #1a202c 100%);
+            color: white;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: fixed;
+            touch-action: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Tablet Optimized Container */
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            perspective: 2000px;
+            background: radial-gradient(ellipse at top, rgba(0, 198, 167, 0.05) 0%, transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(77, 93, 251, 0.05) 0%, transparent 50%);
+        }
+
+        /* Slide Grid - Tablet Optimized */
+        .slides-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(6, 100%);
+            grid-template-rows: 100%;
+            will-change: transform;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(11, 15, 20, 0.98) 0%, rgba(26, 32, 44, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Enhanced 3D Effects for Tablet */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, var(--primary-light), transparent);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .slide.active::before {
+            opacity: 0.5;
+            animation: slideGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes slideGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Content Styling */
+        .content-wrapper {
+            max-width: 900px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(0, 198, 167, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary);
+        }
+
+        .slide-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .slide-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .slide-subtitle {
+            font-size: 1.4rem;
+            color: var(--gray);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Hero Slide */
+        .hero-content {
+            text-align: center;
+            animation: heroEnter 1s ease-out;
+        }
+
+        @keyframes heroEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero-logo {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 198, 167, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            animation: lineExpand 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes lineExpand {
+            to { transform: scaleX(1); }
+        }
+
+        .hero-tagline {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Services - Tablet Grid */
+        .services-tablet-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.8rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 198, 167, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 198, 167, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+
+        /* Gallery - Tablet Optimized */
+        .gallery-tablet-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .gallery-item-tablet {
+            height: 180px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .gallery-item-tablet:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .gallery-item-tablet img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item-tablet:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay-tablet {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item-tablet:hover .gallery-overlay-tablet {
+            opacity: 1;
+        }
+
+        .gallery-number {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Brochures */
+        .brochures-tablet-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .brochure-card {
+            background: linear-gradient(145deg, rgba(0, 198, 167, 0.1), rgba(77, 93, 251, 0.1));
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, var(--primary), var(--secondary)) 1;
+            padding: 1.8rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            user-select: none;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brochure-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .brochure-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .brochure-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats - Tablet Layout */
+        .stats-tablet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .stat-number::after {
+            content: '+';
+            position: absolute;
+            right: -15px;
+            top: 5px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact */
+        .contact-tablet-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.8rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(0, 198, 167, 0.05);
+        }
+
+        .contact-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-details p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Advanced Tablet Controls */
+        .tablet-controls {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+            background: rgba(11, 15, 20, 0.8);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 198, 167, 0.2);
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 198, 167, 0.4);
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Slide Progress - Tablet */
+        .tablet-progress {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.6s ease;
+            border-radius: 2px;
+        }
+
+        /* Slide Dots - Tablet */
+        .tablet-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .dot::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .dot:hover::after {
+            border-color: rgba(0, 198, 167, 0.3);
+        }
+
+        /* Gesture Hint for Tablet */
+        .gesture-hint {
+            position: fixed;
+            bottom: 6rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 99;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Image Viewer for Tablet */
+        .tablet-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .viewer-content-tablet {
+            max-width: 90%;
+            max-height: 80%;
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .viewer-content-tablet img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .close-viewer-tablet {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Parallax Background Elements */
+        .parallax-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            .slide {
+                padding: 1.5rem;
+            }
+            
+            .slide-title {
+                font-size: 2.8rem;
+            }
+            
+            .services-tablet-grid,
+            .contact-tablet-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-tablet-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-logo {
+                font-size: 3.5rem;
+            }
+            
+            .services-tablet-grid,
+            .contact-tablet-grid,
+            .stats-tablet-grid,
+            .brochures-tablet-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            
+            .gallery-tablet-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .tablet-controls {
+                padding: 0.8rem 1.5rem;
+                bottom: 1.5rem;
+            }
+            
+            .control-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .slide {
+                padding: 1rem;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .tablet-controls {
+                bottom: 1rem;
+            }
+        }
+
+        /* No Selection */
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-logo {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">IDAGUNJI</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
+
+    <!-- Main Presentation Container -->
+    <div class="presentation-container" id="presentationContainer">
+        <!-- Parallax Background Elements -->
+        <div class="parallax-bg" id="parallaxBg"></div>
+
+        <!-- Tablet Progress Bar -->
+        <div class="tablet-progress">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Slide Dots -->
+        <div class="tablet-dots" id="tabletDots"></div>
+
+        <!-- Gesture Hint -->
+        <div class="gesture-hint" id="gestureHint">
+            <i class="fas fa-hand-point-up"></i>
+            <span>Swipe or use buttons to navigate</span>
+        </div>
+
+        <!-- Slides Grid -->
+        <div class="slides-grid" id="slidesGrid">
+            <!-- Slide 1: Hero -->
+            <div class="slide active" id="slide1">
+                <div class="slide-number">01</div>
+                <div class="content-wrapper">
+                    <div class="hero-content">
+                        <h1 class="hero-logo">IDAGUNJI</h1>
+                        <div class="hero-tagline">ENTERPRISES</div>
+                        <h2 class="slide-title">ARCHITECTURAL EXCELLENCE</h2>
+                        <p class="slide-subtitle">Premium ACP • Structural Glazing • Aluminum • uPVC • Glass Solutions</p>
+                        
+                        <div class="stats-tablet-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">500</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">100</div>
+                                <div class="stat-label">Client Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Services -->
+            <div class="slide" id="slide2">
+                <div class="slide-number">02</div>
+                <div class="content-wrapper">
+                    <h1 class="slide-title">OUR SERVICES</h1>
+                    <p class="slide-subtitle">Comprehensive architectural solutions with premium quality and precision</p>
+                    
+                    <div class="services-tablet-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="service-name">Aluminum & uPVC Works</div>
+                            <div class="service-desc">Windows, doors, curtain walls with energy-efficient designs</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-glass-whiskey"></i>
+                            </div>
+                            <div class="service-name">Structural Glazing</div>
+                            <div class="service-desc">Seamless glass facades and spider glazing systems</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-grip-lines"></i>
+                            </div>
+                            <div class="service-name">Glass Railings</div>
+                            <div class="service-desc">Elegant glass railings and shower cubicles</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div class="service-name">False Ceilings</div>
+                            <div class="service-desc">Custom false ceilings and architectural canopies</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-th-large"></i>
+                            </div>
+                            <div class="service-name">ACP Cladding</div>
+                            <div class="service-desc">High-quality ACP for modern building facades</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="service-name">Toughened Glass</div>
+                            <div class="service-desc">Safety glass installations and custom solutions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Gallery Part 1 -->
+            <div class="slide" id="slide3">
+                <div class="slide-number">03</div>
+                <div class="content-wrapper">
+                    <h1 class="slide-title">PROJECT GALLERY</h1>
+                    <p class="slide-subtitle">Showcasing excellence in architectural implementation</p>
+                    
+                    <div class="gallery-tablet-container">
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project1.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Modern Building Facade">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 01</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project2.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Structural Glazing">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 02</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project3.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Glass Railing">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 03</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project4.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="ACP Cladding">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 04</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project5.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="uPVC Windows">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 05</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project6.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Commercial Project">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 06</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Gallery Part 2 -->
+            <div class="slide" id="slide4">
+                <div class="slide-number">04</div>
+                <div class="content-wrapper">
+                    <h1 class="slide-title">MORE PROJECTS</h1>
+                    <p class="slide-subtitle">Continued showcase of our architectural excellence</p>
+                    
+                    <div class="gallery-tablet-container">
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project7.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Residential Project">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 07</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project8.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Office Interior">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 08</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project9.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Glass Structure">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 09</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project10.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Modern Design">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 10</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project11.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Facade Detail">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 11</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item-tablet" onclick="openImageViewer('project12.jpg')">
+                            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Completed Project">
+                            <div class="gallery-overlay-tablet">
+                                <span class="gallery-number">Project 12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Brochures -->
+            <div class="slide" id="slide5">
+                <div class="slide-number">05</div>
+                <div class="content-wrapper">
+                    <h1 class="slide-title">PRODUCT BROCHURES</h1>
+                    <p class="slide-subtitle">Download detailed product catalogs and specifications</p>
+                    
+                    <div class="brochures-tablet-grid">
+                        <div class="brochure-card" onclick="downloadBrochure('brochure1.pdf')">
+                            <div class="brochure-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="brochure-title">ACP Sheets</div>
+                            <div class="service-desc">Complete range with specifications and colors</div>
+                        </div>
+                        
+                        <div class="brochure-card" onclick="downloadBrochure('brochure2.pdf')">
+                            <div class="brochure-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="brochure-title">Opulent Series</div>
+                            <div class="service-desc">Toughened, laminated, and decorative glass</div>
+                        </div>
+                        
+                        <div class="brochure-card" onclick="downloadBrochure('brochure3.pdf')">
+                            <div class="brochure-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="brochure-title">Neo Series</div>
+                            <div class="service-desc">uPVC and aluminum window systems</div>
+                        </div>
+                        
+                        <div class="brochure-card" onclick="downloadBrochure('brochure4.pdf')">
+                            <div class="brochure-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="brochure-title">Premium Louvers</div>
+                            <div class="service-desc">Complete product portfolio and guidelines</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Contact -->
+            <div class="slide" id="slide6">
+                <div class="slide-number">06</div>
+                <div class="content-wrapper">
+                    <h1 class="slide-title">CONTACT US</h1>
+                    <p class="slide-subtitle">Let's discuss your next architectural project</p>
+                    
+                    <div class="contact-tablet-grid">
+                        <div class="contact-card">
+                            <div class="contact-icon-wrapper">
+                                <i class="fas fa-phone-alt contact-icon"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Call Us</h3>
+                                <p>+91 99000 99144</p>
+                                <p style="color: var(--primary); font-weight: 500;">Umesh Shankarappa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon-wrapper">
+                                <i class="fas fa-envelope contact-icon"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email Us</h3>
+                                <p>info@idagunjienterprises.com</p>
+                                <p>queries@idagunjienterprises.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon-wrapper">
+                                <i class="fas fa-map-marker-alt contact-icon"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>Based in Karnataka</p>
+                                <p>Serving Pan-India Projects</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon-wrapper">
+                                <i class="fas fa-clock contact-icon"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Business Hours</h3>
+                                <p>Mon-Sat: 9AM - 7PM</p>
+                                <p>Sunday: Emergency Only</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box" style="margin-top: 3rem; text-align: center; padding: 2rem; border-radius: var(--radius-md); background: rgba(0, 198, 167, 0.05); border: 1px solid var(--primary);">
+                        <p style="font-size: 1.2rem; line-height: 1.6;">
+                            Thank you for viewing our presentation. We look forward to working with you on your next architectural project.
+                            <br><br>
+                            <span style="color: var(--primary); font-weight: 700; font-size: 1.4rem;">IDAGUNJI ENTERPRISES</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tablet Controls -->
+        <div class="tablet-controls">
+            <button class="control-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="control-btn" id="homeBtn">
+                <i class="fas fa-home"></i>
+            </button>
+            <button class="control-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Tablet Image Viewer -->
+    <div class="tablet-viewer" id="tabletViewer">
+        <button class="close-viewer-tablet" onclick="closeImageViewer()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="viewer-content-tablet">
+            <img id="viewerImageTablet" src="" alt="Project Image">
+        </div>
+    </div>
+
+    <script>
+        // Enhanced Tablet Presentation System
+        class TabletPresentation {
+            constructor() {
+                this.slidesGrid = document.getElementById('slidesGrid');
+                this.slides = document.querySelectorAll('.slide');
+                this.totalSlides = this.slides.length;
+                this.currentSlide = 0;
+                this.isAnimating = false;
+                this.animationDuration = 800;
+                this.touchStartX = 0;
+                this.touchEndX = 0;
+                this.swipeThreshold = 50;
+                this.autoAdvanceInterval = null;
+                this.autoAdvanceDelay = 15000; // 15 seconds
+                
+                this.init();
+            }
+            
+            init() {
+                this.createBackgroundElements();
+                this.createSlideIndicators();
+                this.setupEventListeners();
+                this.updateProgress();
+                this.startAutoAdvance();
+                
+                // Simulate loading progress
+                this.simulateLoading();
+            }
+            
+            simulateLoading() {
+                const loadingProgress = document.getElementById('loadingProgress');
+                const loadingScreen = document.getElementById('loadingScreen');
+                
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    loadingProgress.style.width = `${progress}%`;
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            loadingScreen.style.opacity = '0';
+                            setTimeout(() => {
+                                loadingScreen.style.display = 'none';
+                            }, 500);
+                        }, 300);
+                    }
+                }, 50);
+            }
+            
+            createBackgroundElements() {
+                const parallaxBg = document.getElementById('parallaxBg');
+                const elements = 15;
+                
+                for (let i = 0; i < elements; i++) {
+                    const element = document.createElement('div');
+                    element.className = 'bg-element';
+                    
+                    // Random size and position
+                    const size = Math.random() * 200 + 50;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    
+                    element.style.width = `${size}px`;
+                    element.style.height = `${size}px`;
+                    element.style.left = `${posX}%`;
+                    element.style.top = `${posY}%`;
+                    element.style.opacity = Math.random() * 0.1 + 0.05;
+                    
+                    parallaxBg.appendChild(element);
+                }
+            }
+            
+            createSlideIndicators() {
+                const dotsContainer = document.getElementById('tabletDots');
+                
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.dataset.index = i;
+                    
+                    dot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.goToSlide(parseInt(dot.dataset.index));
+                    });
+                    
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            setupEventListeners() {
+                // Button controls
+                document.getElementById('prevBtn').addEventListener('click', () => this.prevSlide());
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextSlide());
+                document.getElementById('homeBtn').addEventListener('click', () => this.goToSlide(0));
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        this.nextSlide();
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.prevSlide();
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        this.goToSlide(0);
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        this.goToSlide(this.totalSlides - 1);
+                    }
+                });
+                
+                // Touch gestures
+                document.addEventListener('touchstart', (e) => {
+                    this.touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                
+                document.addEventListener('touchend', (e) => {
+                    this.touchEndX = e.changedTouches[0].screenX;
+                    this.handleSwipe();
+                }, { passive: true });
+                
+                // Mouse wheel for desktop tablets
+                document.addEventListener('wheel', (e) => {
+                    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                        e.preventDefault();
+                        if (e.deltaX > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                    }
+                }, { passive: false });
+                
+                // Reset auto-advance on interaction
+                document.addEventListener('click', () => this.resetAutoAdvance());
+                document.addEventListener('touchstart', () => this.resetAutoAdvance());
+                document.addEventListener('keydown', () => this.resetAutoAdvance());
+            }
+            
+            handleSwipe() {
+                if (this.touchEndX < this.touchStartX - this.swipeThreshold) {
+                    this.nextSlide();
+                } else if (this.touchEndX > this.touchStartX + this.swipeThreshold) {
+                    this.prevSlide();
+                }
+            }
+            
+            goToSlide(index) {
+                if (this.isAnimating || index === this.currentSlide) return;
+                
+                this.isAnimating = true;
+                
+                // Update current slide
+                const prevSlide = this.currentSlide;
+                this.currentSlide = index;
+                
+                // Calculate transform
+                const transformValue = -this.currentSlide * 100;
+                this.slidesGrid.style.transform = `translateX(${transformValue}%)`;
+                
+                // Update indicators
+                this.updateIndicators();
+                this.updateProgress();
+                
+                // Reset animation flag after transition
+                setTimeout(() => {
+                    this.isAnimating = false;
+                }, this.animationDuration);
+            }
+            
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides - 1) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+            
+            prevSlide() {
+                if (this.currentSlide > 0) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+            
+            updateIndicators() {
+                const dots = document.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+            }
+            
+            updateProgress() {
+                const progressFill = document.getElementById('progressFill');
+                const progress = ((this.currentSlide + 1) / this.totalSlides) * 100;
+                progressFill.style.width = `${progress}%`;
+            }
+            
+            startAutoAdvance() {
+                this.autoAdvanceInterval = setInterval(() => {
+                    if (this.currentSlide < this.totalSlides - 1) {
+                        this.nextSlide();
+                    } else {
+                        this.goToSlide(0);
+                    }
+                }, this.autoAdvanceDelay);
+            }
+            
+            resetAutoAdvance() {
+                clearInterval(this.autoAdvanceInterval);
+                this.startAutoAdvance();
+            }
+        }
+        
+        // Image Viewer Functions
+        function openImageViewer(imageSrc) {
+            const viewer = document.getElementById('tabletViewer');
+            const viewerImage = document.getElementById('viewerImageTablet');
+            
+            // Use placeholder if actual image doesn't exist
+            viewerImage.src = imageSrc;
+            viewer.style.display = 'flex';
+        }
+        
+        function closeImageViewer() {
+            const viewer = document.getElementById('tabletViewer');
+            viewer.style.display = 'none';
+        }
+        
+        // Close viewer when clicking outside image
+        document.getElementById('tabletViewer').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('tabletViewer')) {
+                closeImageViewer();
+            }
+        });
+        
+        // Brochure Download Function
+        function downloadBrochure(file) {
+            // In a real implementation, this would open/download the actual PDF
+            alert(`Downloading ${file}\nIn a real implementation, this would open the PDF file.`);
+            // window.open(file, '_blank');
+        }
+        
+        // Initialize presentation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const presentation = new TabletPresentation();
+            
+            // Make presentation available globally for debugging
+            window.presentation = presentation;
+            
+            // Hide gesture hint after 10 seconds
+            setTimeout(() => {
+                document.getElementById('gestureHint').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('gestureHint').style.display = 'none';
+                }, 1000);
+            }, 10000);
+        });
+        
+        // Handle orientation change
+        window.addEventListener('orientationchange', () => {
+            // Give time for orientation to complete
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+        });
+        
+        // Prevent context menu on long press
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+    </script>
+</body>
+</html>
