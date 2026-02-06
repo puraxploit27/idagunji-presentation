@@ -65,6 +65,7 @@
         .content-wrapper {
             width: 90%;
             max-width: 1000px;
+            height: 85%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -168,14 +169,35 @@
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin-top: 20px;
             width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 5px 20px 5px;
+        }
+
+        /* Custom scrollbar for gallery */
+        .gallery-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .gallery-grid::-webkit-scrollbar-track {
+            background: rgba(210, 180, 140, 0.1);
+            border-radius: 3px;
+        }
+
+        .gallery-grid::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .gallery-grid::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
         }
 
         .gallery-item {
-            height: 120px;
+            height: 180px;
             border-radius: var(--radius);
             overflow: hidden;
             position: relative;
@@ -185,12 +207,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--secondary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .gallery-number {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(44, 24, 16, 0.8);
             color: var(--secondary);
             font-weight: 700;
-            font-size: 14px;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            z-index: 2;
         }
 
         /* Brochures */
@@ -312,6 +354,7 @@
             justify-content: space-between;
             padding: 0 10px;
             pointer-events: none;
+            z-index: 100;
         }
 
         .nav-btn {
@@ -345,6 +388,7 @@
             background: rgba(210, 180, 140, 0.1);
             border-radius: 2px;
             overflow: hidden;
+            z-index: 100;
         }
 
         .progress-fill {
@@ -362,6 +406,7 @@
             transform: translateX(-50%);
             display: flex;
             gap: 8px;
+            z-index: 100;
         }
 
         .dot {
@@ -385,6 +430,7 @@
             color: var(--secondary);
             font-size: 14px;
             font-weight: 600;
+            z-index: 100;
         }
 
         /* PDF Viewer */
@@ -445,6 +491,51 @@
             border: none;
         }
 
+        /* Image Fullscreen Viewer */
+        .image-viewer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-viewer-container {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .image-viewer-container img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .image-viewer-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* Thank You */
         .thank-you-icons {
             display: flex;
@@ -498,6 +589,10 @@
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-item {
+                height: 150px;
             }
         }
     </style>
@@ -614,153 +709,31 @@
                 </div>
             </div>
 
-           <!-- Slide 3: Gallery Page 1 -->
-<div class="slide">
-    <div class="slide-number">03</div>
-    <div class="content-wrapper">
-        <h1 class="slide-title">PROJECT GALLERY</h1>
-        <p class="slide-subtitle">Photos 1-12 • Showcasing our architectural excellence</p>
-        
-        <div class="gallery-grid" id="galleryPage1">
-            <!-- Photo 1 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery1.jpg')">
-                <img src="gallery1.jpg" alt="Project 1" onerror="this.style.display='none'">
-                <div class="gallery-number">01</div>
+            <!-- Slide 3: Gallery Page 1 -->
+            <div class="slide">
+                <div class="slide-number">03</div>
+                <div class="content-wrapper">
+                    <h1 class="slide-title">PROJECT GALLERY</h1>
+                    <p class="slide-subtitle">Photos 1-12 • Scroll to view more photos</p>
+                    
+                    <div class="gallery-grid" id="galleryPage1">
+                        <!-- Photos 1-12 will be dynamically loaded -->
+                    </div>
+                </div>
             </div>
-            
-            <!-- Photo 2 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery2.jpg')">
-                <img src="gallery2.jpg" alt="Project 2" onerror="this.style.display='none'">
-                <div class="gallery-number">02</div>
-            </div>
-            
-            <!-- Photo 3 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery3.jpg')">
-                <img src="gallery3.jpg" alt="Project 3" onerror="this.style.display='none'">
-                <div class="gallery-number">03</div>
-            </div>
-            
-            <!-- Photo 4 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery4.jpg')">
-                <img src="gallery4.jpg" alt="Project 4" onerror="this.style.display='none'">
-                <div class="gallery-number">04</div>
-            </div>
-            
-            <!-- Photo 5 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery5.jpg')">
-                <img src="gallery5.jpg" alt="Project 5" onerror="this.style.display='none'">
-                <div class="gallery-number">05</div>
-            </div>
-            
-            <!-- Photo 6 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery6.jpg')">
-                <img src="gallery6.jpg" alt="Project 6" onerror="this.style.display='none'">
-                <div class="gallery-number">06</div>
-            </div>
-            
-            <!-- Photo 7 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery7.jpg')">
-                <img src="gallery7.jpg" alt="Project 7" onerror="this.style.display='none'">
-                <div class="gallery-number">07</div>
-            </div>
-            
-            <!-- Photo 8 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery8.jpg')">
-                <img src="gallery8.jpg" alt="Project 8" onerror="this.style.display='none'">
-                <div class="gallery-number">08</div>
-            </div>
-            
-            <!-- Photo 9 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery9.jpg')">
-                <img src="gallery9.jpg" alt="Project 9" onerror="this.style.display='none'">
-                <div class="gallery-number">09</div>
-            </div>
-            
-            <!-- Photo 10 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery10.jpg')">
-                <img src="gallery10.jpg" alt="Project 10" onerror="this.style.display='none'">
-                <div class="gallery-number">10</div>
-            </div>
-            
-            <!-- Photo 11 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery11.jpg')">
-                <img src="gallery11.jpg" alt="Project 11" onerror="this.style.display='none'">
-                <div class="gallery-number">11</div>
-            </div>
-            
-            <!-- Photo 12 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery12.jpg')">
-                <img src="gallery12.jpg" alt="Project 12" onerror="this.style.display='none'">
-                <div class="gallery-number">12</div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Slide 4: Gallery Page 2 -->
-<div class="slide">
-    <div class="slide-number">04</div>
-    <div class="content-wrapper">
-        <h1 class="slide-title">PROJECT GALLERY</h1>
-        <p class="slide-subtitle">Photos 13-21 • Continued showcase of our work</p>
-        
-        <div class="gallery-grid" id="galleryPage2">
-            <!-- Photo 13 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery13.jpg')">
-                <img src="gallery13.jpg" alt="Project 13" onerror="this.style.display='none'">
-                <div class="gallery-number">13</div>
+            <!-- Slide 4: Gallery Page 2 -->
+            <div class="slide">
+                <div class="slide-number">04</div>
+                <div class="content-wrapper">
+                    <h1 class="slide-title">PROJECT GALLERY</h1>
+                    <p class="slide-subtitle">Photos 13-21 • Continued showcase of our work</p>
+                    
+                    <div class="gallery-grid" id="galleryPage2">
+                        <!-- Photos 13-21 will be dynamically loaded -->
+                    </div>
+                </div>
             </div>
-            
-            <!-- Photo 14 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery14.jpg')">
-                <img src="gallery14.jpg" alt="Project 14" onerror="this.style.display='none'">
-                <div class="gallery-number">14</div>
-            </div>
-            
-            <!-- Photo 15 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery15.jpg')">
-                <img src="gallery15.jpg" alt="Project 15" onerror="this.style.display='none'">
-                <div class="gallery-number">15</div>
-            </div>
-            
-            <!-- Photo 16 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery16.jpg')">
-                <img src="gallery16.jpg" alt="Project 16" onerror="this.style.display='none'">
-                <div class="gallery-number">16</div>
-            </div>
-            
-            <!-- Photo 17 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery17.jpg')">
-                <img src="gallery17.jpg" alt="Project 17" onerror="this.style.display='none'">
-                <div class="gallery-number">17</div>
-            </div>
-            
-            <!-- Photo 18 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery18.jpg')">
-                <img src="gallery18.jpg" alt="Project 18" onerror="this.style.display='none'">
-                <div class="gallery-number">18</div>
-            </div>
-            
-            <!-- Photo 19 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery19.jpg')">
-                <img src="gallery19.jpg" alt="Project 19" onerror="this.style.display='none'">
-                <div class="gallery-number">19</div>
-            </div>
-            
-            <!-- Photo 20 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery20.jpg')">
-                <img src="gallery20.jpg" alt="Project 20" onerror="this.style.display='none'">
-                <div class="gallery-number">20</div>
-            </div>
-            
-            <!-- Photo 21 -->
-            <div class="gallery-item" onclick="viewGalleryImage('gallery21.jpg')">
-                <img src="gallery21.jpg" alt="Project 21" onerror="this.style.display='none'">
-                <div class="gallery-number">21</div>
-            </div>
-        </div>
-    </div>
-</div>
 
             <!-- Slide 5: Brochures -->
             <div class="slide">
@@ -908,6 +881,16 @@
         </div>
     </div>
 
+    <!-- Image Fullscreen Viewer -->
+    <div class="image-viewer-overlay" id="imageViewer">
+        <div class="image-viewer-container">
+            <button class="image-viewer-close" onclick="closeImageViewer()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="fullscreenImage" src="" alt="Fullscreen Image">
+        </div>
+    </div>
+
     <script>
         class Presentation {
             constructor() {
@@ -1006,8 +989,30 @@
                 for (let i = 1; i <= 12; i++) {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
-                    item.innerHTML = `<div class="gallery-number">${i}</div>`;
-                    item.onclick = () => alert(`Project ${i}`);
+                    item.onclick = () => this.viewImage(i);
+                    
+                    const img = document.createElement('img');
+                    img.src = `gallery${i}.jpg`;
+                    img.alt = `Project ${i}`;
+                    img.onerror = function() {
+                        // If image doesn't load, show placeholder
+                        this.style.display = 'none';
+                        item.innerHTML = `<div class="gallery-number">${i}</div>`;
+                        item.style.background = 'linear-gradient(135deg, #3C2818, #2C1810)';
+                        item.style.display = 'flex';
+                        item.style.alignItems = 'center';
+                        item.style.justifyContent = 'center';
+                        item.style.color = 'var(--secondary)';
+                        item.style.fontSize = '16px';
+                        item.style.fontWeight = 'bold';
+                    };
+                    
+                    const number = document.createElement('div');
+                    number.className = 'gallery-number';
+                    number.textContent = i.toString().padStart(2, '0');
+                    
+                    item.appendChild(img);
+                    item.appendChild(number);
                     gallery1.appendChild(item);
                 }
                 
@@ -1015,11 +1020,64 @@
                 for (let i = 13; i <= 21; i++) {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
-                    item.innerHTML = `<div class="gallery-number">${i}</div>`;
-                    item.onclick = () => alert(`Project ${i}`);
+                    item.onclick = () => this.viewImage(i);
+                    
+                    const img = document.createElement('img');
+                    img.src = `gallery${i}.jpg`;
+                    img.alt = `Project ${i}`;
+                    img.onerror = function() {
+                        // If image doesn't load, show placeholder
+                        this.style.display = 'none';
+                        item.innerHTML = `<div class="gallery-number">${i}</div>`;
+                        item.style.background = 'linear-gradient(135deg, #3C2818, #2C1810)';
+                        item.style.display = 'flex';
+                        item.style.alignItems = 'center';
+                        item.style.justifyContent = 'center';
+                        item.style.color = 'var(--secondary)';
+                        item.style.fontSize = '16px';
+                        item.style.fontWeight = 'bold';
+                    };
+                    
+                    const number = document.createElement('div');
+                    number.className = 'gallery-number';
+                    number.textContent = i.toString().padStart(2, '0');
+                    
+                    item.appendChild(img);
+                    item.appendChild(number);
                     gallery2.appendChild(item);
                 }
             }
+            
+            viewImage(photoNumber) {
+                const imageSrc = `gallery${photoNumber}.jpg`;
+                const fullscreenImage = document.getElementById('fullscreenImage');
+                const imageViewer = document.getElementById('imageViewer');
+                
+                fullscreenImage.src = imageSrc;
+                fullscreenImage.onerror = function() {
+                    this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%232C1810"/><text x="50%" y="50%" font-family="Arial" font-size="16" fill="%23D2B48C" text-anchor="middle" dy=".3em">Image not found</text></svg>';
+                };
+                
+                imageViewer.style.display = 'flex';
+                
+                // Prevent slide navigation while image viewer is open
+                document.addEventListener('keydown', this.preventSlideNavigation);
+            }
+            
+            preventSlideNavigation(e) {
+                if (document.getElementById('imageViewer').style.display === 'flex') {
+                    e.stopPropagation();
+                    if (e.key === 'Escape') {
+                        closeImageViewer();
+                    }
+                }
+            }
+        }
+        
+        // Image Viewer Functions
+        function closeImageViewer() {
+            document.getElementById('imageViewer').style.display = 'none';
+            document.removeEventListener('keydown', presentation.preventSlideNavigation);
         }
         
         // PDF Functions
@@ -1036,8 +1094,13 @@
         
         // Close PDF on ESC or click outside
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.getElementById('pdfViewer').style.display === 'flex') {
-                closePDFViewer();
+            if (e.key === 'Escape') {
+                if (document.getElementById('pdfViewer').style.display === 'flex') {
+                    closePDFViewer();
+                }
+                if (document.getElementById('imageViewer').style.display === 'flex') {
+                    closeImageViewer();
+                }
             }
         });
         
@@ -1045,11 +1108,16 @@
             if (e.target === this) closePDFViewer();
         });
         
+        document.getElementById('imageViewer').addEventListener('click', function(e) {
+            if (e.target === this) closeImageViewer();
+        });
+        
         // Initialize
+        let presentation;
         document.addEventListener('DOMContentLoaded', () => {
-            new Presentation();
+            presentation = new Presentation();
+            window.presentation = presentation;
         });
     </script>
 </body>
 </html>
-
