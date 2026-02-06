@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Fixed viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Idagunji Enterprises | Laptop Presentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8B4513; /* Saddle Brown */
-            --primary-dark: #654321; /* Dark Brown */
+            --primary: #8B4513;
+            --primary-dark: #654321;
             --primary-light: rgba(139, 69, 19, 0.1);
-            --secondary: #D2B48C; /* Tan */
-            --accent: #A0522D; /* Sienna */
-            --dark: #2C1810; /* Dark Chocolate */
+            --secondary: #D2B48C;
+            --accent: #A0522D;
+            --dark: #2C1810;
             --darker: #1A0F0A;
-            --light: #F5F5DC; /* Beige */
-            --light-bg: #FAF3E0; /* Light Beige */
+            --light: #F5F5DC;
+            --light-bg: #FAF3E0;
             --gray: #8B7D6B;
             --transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             --shadow-lg: 0 25px 50px -12px rgba(43, 34, 24, 0.5);
@@ -32,8 +33,8 @@
             box-sizing: border-box;
         }
 
-        html {
-            font-size: 16px;
+        html, body {
+            width: 100%;
             height: 100%;
             overflow: hidden;
         }
@@ -42,40 +43,34 @@
             font-family: 'Poppins', system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, #2C1810 0%, #3C2818 100%);
             color: var(--light);
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Laptop Optimized Container */
+        /* Presentation Container */
         .presentation-container {
+            width: 100vw;
+            height: 100vh;
             position: relative;
-            width: 100%;
-            height: 100%;
             overflow: hidden;
             background: radial-gradient(ellipse at top, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
                         radial-gradient(ellipse at bottom, rgba(210, 180, 140, 0.05) 0%, transparent 50%);
         }
 
-        /* Slides Grid - Laptop Optimized */
+        /* Slides Grid */
         .slides-grid {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(7, 100%);
-            grid-template-rows: 100%;
+            width: 700vw; /* 7 slides * 100vw */
+            height: 100vh;
+            display: flex;
             will-change: transform;
             transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         .slide {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            padding: 3rem 4rem;
+            width: 100vw;
+            height: 100vh;
+            padding: 40px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -85,13 +80,14 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(210, 180, 140, 0.1);
             box-shadow: var(--shadow-lg);
+            flex-shrink: 0;
         }
 
-        /* Content Styling for Laptop */
+        /* Content Styling */
         .content-wrapper {
             max-width: 1200px;
-            width: 100%;
-            height: 100%;
+            width: 90%;
+            height: 90%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -102,14 +98,14 @@
 
         .slide-number {
             position: absolute;
-            top: 3rem;
-            left: 4rem;
-            font-size: 1.3rem;
+            top: 30px;
+            left: 60px;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--secondary);
             background: rgba(210, 180, 140, 0.1);
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -118,10 +114,10 @@
         }
 
         .slide-title {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 900;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(45deg, var(--secondary), var(--primary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -145,7 +141,7 @@
         }
 
         .slide-subtitle {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--gray);
             text-align: center;
             margin-bottom: 2.5rem;
@@ -160,7 +156,7 @@
         }
 
         .hero-logo {
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: 900;
             margin-bottom: 0.5rem;
             background: linear-gradient(45deg, var(--secondary), var(--primary));
@@ -171,20 +167,20 @@
         }
 
         .hero-tagline {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--secondary);
             margin-bottom: 3rem;
             font-weight: 300;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
-        /* Services Grid for Laptop */
+        /* Services Grid */
         .services-laptop-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
             width: 100%;
             max-width: 1200px;
         }
@@ -192,11 +188,11 @@
         .service-card {
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border: 1px solid rgba(210, 180, 140, 0.15);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: var(--radius-md);
             text-align: center;
             transition: var(--transition);
-            height: 280px;
+            height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -204,17 +200,17 @@
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--secondary);
             box-shadow: var(--shadow-primary);
         }
 
         .service-icon {
-            font-size: 3.2rem;
+            font-size: 2.5rem;
             color: var(--secondary);
-            margin-bottom: 1.5rem;
-            width: 90px;
-            height: 90px;
+            margin-bottom: 1.2rem;
+            width: 70px;
+            height: 70px;
             background: rgba(210, 180, 140, 0.1);
             border-radius: 50%;
             display: flex;
@@ -223,30 +219,30 @@
         }
 
         .service-name {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--light);
         }
 
         .service-desc {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--gray);
             line-height: 1.5;
         }
 
-        /* Gallery for Laptop - 4 Columns */
+        /* Gallery Grid */
         .gallery-laptop-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
+            gap: 1.2rem;
+            margin-top: 2rem;
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
         }
 
         .gallery-item-laptop {
-            height: 220px;
+            height: 180px;
             border-radius: var(--radius-md);
             overflow: hidden;
             position: relative;
@@ -260,8 +256,8 @@
 
         .gallery-item-laptop:hover {
             border-color: var(--secondary);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .gallery-overlay-laptop {
@@ -275,44 +271,40 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            padding: 1.5rem;
+            padding: 1rem;
             opacity: 1;
             transition: var(--transition);
-        }
-
-        .gallery-item-laptop:hover .gallery-overlay-laptop {
-            background: linear-gradient(0deg, rgba(44, 24, 16, 0.95) 0%, transparent 60%);
         }
 
         .gallery-number {
             color: var(--secondary);
             font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
         }
 
-        /* Product Brochures Section */
+        /* Brochures */
         .brochures-section {
-            margin-top: 3rem;
+            margin-top: 2rem;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
             text-align: center;
         }
 
         .brochure-buttons-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .brochure-btn {
             background: linear-gradient(145deg, rgba(139, 69, 19, 0.15), rgba(210, 180, 140, 0.1));
             border: 2px solid var(--secondary);
             color: var(--light);
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1rem;
             border-radius: var(--radius-md);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
@@ -320,41 +312,35 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            height: 180px;
+            gap: 0.8rem;
+            height: 160px;
         }
 
         .brochure-btn:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             background: linear-gradient(145deg, rgba(139, 69, 19, 0.25), rgba(210, 180, 140, 0.15));
             border-color: var(--primary);
             box-shadow: var(--shadow-primary);
         }
 
         .brochure-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--secondary);
         }
 
-        .brochure-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        /* Stats for Laptop */
+        /* Stats */
         .stats-laptop-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            margin-top: 2rem;
             width: 100%;
-            max-width: 1000px;
+            max-width: 900px;
         }
 
         .stat-card {
             text-align: center;
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border-radius: var(--radius-md);
             border: 1px solid rgba(210, 180, 140, 0.15);
@@ -367,7 +353,7 @@
         }
 
         .stat-number {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 900;
             color: var(--secondary);
             line-height: 1;
@@ -375,35 +361,35 @@
         }
 
         .stat-label {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--gray);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
         }
 
-        /* Contact Page for Laptop */
+        /* Contact */
         .contact-page {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
             width: 100%;
         }
 
         .contact-card {
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border: 1px solid rgba(210, 180, 140, 0.15);
-            padding: 2.5rem;
+            padding: 1.8rem;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
             transition: var(--transition);
         }
 
@@ -414,8 +400,8 @@
         }
 
         .contact-icon-wrapper {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
@@ -425,27 +411,27 @@
         }
 
         .contact-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--light);
         }
 
         .contact-details h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
             color: var(--secondary);
         }
 
         .contact-details p {
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             line-height: 1.5;
         }
 
         .contact-map {
-            margin-top: 4rem;
+            margin-top: 2.5rem;
             width: 100%;
-            height: 350px;
+            height: 250px;
             background: linear-gradient(145deg, rgba(210, 180, 140, 0.08), rgba(139, 69, 19, 0.05));
             border-radius: var(--radius-md);
             border: 1px solid rgba(210, 180, 140, 0.15);
@@ -453,12 +439,12 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            gap: 1.5rem;
-            padding: 3rem;
+            gap: 1rem;
+            padding: 2rem;
         }
 
         .map-icon {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: var(--secondary);
         }
 
@@ -469,29 +455,8 @@
 
         .map-text h3 {
             color: var(--secondary);
-            margin-bottom: 0.8rem;
-            font-size: 1.5rem;
-        }
-
-        /* Slide Progress */
-        .laptop-progress {
-            position: fixed;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 400px;
-            height: 6px;
-            background: rgba(210, 180, 140, 0.1);
-            border-radius: 3px;
-            z-index: 100;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            width: 0%;
-            transition: width 0.6s ease;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         /* Navigation Controls */
@@ -502,20 +467,20 @@
             transform: translateY(-50%);
             display: flex;
             justify-content: space-between;
-            padding: 0 2rem;
+            padding: 0 20px;
             z-index: 100;
             pointer-events: none;
         }
 
         .nav-btn {
             pointer-events: all;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: rgba(210, 180, 140, 0.15);
             border: 2px solid var(--secondary);
             color: var(--light);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -530,24 +495,41 @@
             box-shadow: var(--shadow-primary);
         }
 
-        .nav-btn:active {
-            transform: scale(0.95);
+        /* Progress Bar */
+        .laptop-progress {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 5px;
+            background: rgba(210, 180, 140, 0.1);
+            border-radius: 3px;
+            z-index: 100;
+            overflow: hidden;
         }
 
-        /* Slide Dots for Laptop */
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        /* Slide Dots */
         .laptop-dots {
             position: fixed;
-            bottom: 6rem;
+            bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             z-index: 100;
         }
 
         .dot {
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: rgba(210, 180, 140, 0.3);
             border: 2px solid transparent;
@@ -557,49 +539,29 @@
 
         .dot.active {
             background: var(--secondary);
-            transform: scale(1.4);
+            transform: scale(1.3);
         }
 
         .dot:hover {
             background: var(--secondary);
-            transform: scale(1.2);
-        }
-
-        /* Navigation Hint */
-        .nav-hint {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            color: var(--secondary);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            z-index: 99;
-            opacity: 0.7;
-            background: rgba(44, 24, 16, 0.7);
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            border: 1px solid rgba(210, 180, 140, 0.3);
-            pointer-events: none;
         }
 
         /* Slide Counter */
         .slide-counter {
             position: fixed;
-            top: 3rem;
-            right: 4rem;
+            top: 30px;
+            right: 60px;
             color: var(--secondary);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             background: rgba(210, 180, 140, 0.1);
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 30px;
             border: 2px solid rgba(210, 180, 140, 0.3);
             z-index: 100;
         }
 
-        /* PDF Viewer Overlay */
+        /* PDF Viewer */
         .pdf-viewer-overlay {
             position: fixed;
             top: 0;
@@ -612,7 +574,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 3rem;
+            padding: 20px;
         }
 
         .pdf-viewer-container {
@@ -627,7 +589,7 @@
         }
 
         .pdf-viewer-header {
-            padding: 1.8rem 2.5rem;
+            padding: 1.5rem 2rem;
             background: var(--primary);
             color: var(--light);
             display: flex;
@@ -636,7 +598,7 @@
         }
 
         .pdf-viewer-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
         }
 
@@ -644,19 +606,15 @@
             background: none;
             border: none;
             color: var(--light);
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-        }
-
-        .pdf-viewer-close:hover {
-            background: rgba(255, 255, 255, 0.1);
         }
 
         .pdf-viewer-content {
@@ -670,35 +628,56 @@
             border: none;
         }
 
-        /* Gallery Image Placeholder */
+        /* Gallery Placeholder */
         .gallery-placeholder {
             width: 100%;
             height: 100%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: var(--light);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
             text-align: center;
-            padding: 1.5rem;
-            line-height: 1.4;
+            padding: 1rem;
+        }
+
+        /* Thank You Slide */
+        .thank-you-content {
+            text-align: center;
+        }
+
+        .thank-you-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .thank-you-icon {
+            text-align: center;
+        }
+
+        .thank-you-icon i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-icon p {
+            font-weight: 600;
+            color: var(--light);
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
             .slide {
-                padding: 2rem 3rem;
+                padding: 30px 40px;
             }
             
             .slide-title {
-                font-size: 3rem;
-            }
-            
-            .slide-subtitle {
-                font-size: 1.4rem;
+                font-size: 2.5rem;
             }
             
             .services-laptop-grid {
@@ -711,62 +690,68 @@
         }
 
         @media (max-width: 768px) {
+            .slide {
+                padding: 20px 30px;
+            }
+            
             .slide-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.1rem;
             }
             
             .hero-logo {
-                font-size: 4rem;
+                font-size: 3rem;
             }
             
             .services-laptop-grid,
-            .gallery-laptop-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
+            .gallery-laptop-container,
+            .contact-grid,
             .brochure-buttons-container {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .laptop-progress {
-                width: 300px;
-            }
-        }
-
-        @media (max-height: 800px) {
-            .slide {
-                padding: 2rem 3rem;
-            }
-            
-            .slide-title {
-                font-size: 2.8rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .slide-subtitle {
-                font-size: 1.3rem;
-                margin-bottom: 2rem;
+            .service-card {
+                height: 220px;
+                padding: 1.5rem;
             }
             
             .gallery-item-laptop {
-                height: 180px;
+                height: 150px;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .slide {
+                padding: 20px 30px;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
             }
             
             .service-card {
-                height: 240px;
-                padding: 2rem;
+                height: 200px;
+                padding: 1.5rem;
+            }
+            
+            .gallery-item-laptop {
+                height: 140px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Main Presentation Container -->
     <div class="presentation-container" id="presentationContainer">
-        <!-- Slide Progress Bar -->
+        <!-- Progress Bar -->
         <div class="laptop-progress">
             <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -784,19 +769,13 @@
             </button>
         </div>
 
-        <!-- Navigation Hint -->
-        <div class="nav-hint" id="navHint">
-            <i class="fas fa-arrows-alt-h"></i>
-            <span>Use ← → keys or click arrows</span>
-        </div>
-
         <!-- Slide Counter -->
         <div class="slide-counter" id="slideCounter">01 / 07</div>
 
         <!-- Slides Grid -->
         <div class="slides-grid" id="slidesGrid">
             <!-- Slide 1: Hero -->
-            <div class="slide active" id="slide1">
+            <div class="slide" id="slide1">
                 <div class="slide-number">01</div>
                 <div class="content-wrapper">
                     <div class="hero-content">
@@ -831,6 +810,7 @@
                     <p class="slide-subtitle">Comprehensive architectural solutions with premium quality and precision engineering</p>
                     
                     <div class="services-laptop-grid">
+                        <!-- Services cards... (same as before) -->
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-building"></i>
@@ -882,7 +862,7 @@
                 </div>
             </div>
 
-            <!-- Slide 3: Gallery Page 1 (1-12) -->
+            <!-- Slide 3: Gallery Page 1 -->
             <div class="slide" id="slide3">
                 <div class="slide-number">03</div>
                 <div class="content-wrapper">
@@ -895,7 +875,7 @@
                 </div>
             </div>
 
-            <!-- Slide 4: Gallery Page 2 (13-21) -->
+            <!-- Slide 4: Gallery Page 2 -->
             <div class="slide" id="slide4">
                 <div class="slide-number">04</div>
                 <div class="content-wrapper">
@@ -908,7 +888,7 @@
                 </div>
             </div>
 
-            <!-- Slide 5: Product Brochures -->
+            <!-- Slide 5: Brochures -->
             <div class="slide" id="slide5">
                 <div class="slide-number">05</div>
                 <div class="content-wrapper">
@@ -919,29 +899,29 @@
                         <div class="brochure-buttons-container">
                             <button class="brochure-btn" onclick="viewPDF('brochure1.pdf', 'ACP Sheets Catalog')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">ACP Sheets Catalog</span>
+                                <span class="brochure-text">ACP Sheets</span>
                             </button>
                             
                             <button class="brochure-btn" onclick="viewPDF('brochure2.pdf', 'Glass Designs Portfolio')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">Glass Designs Portfolio</span>
+                                <span class="brochure-text">Glass Designs</span>
                             </button>
                             
                             <button class="brochure-btn" onclick="viewPDF('brochure3.pdf', 'Window Models Catalog')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">Window Models Catalog</span>
+                                <span class="brochure-text">Window Models</span>
                             </button>
                             
                             <button class="brochure-btn" onclick="viewPDF('brochure4.pdf', 'Premium Product Catalog')">
                                 <i class="fas fa-file-pdf brochure-icon"></i>
-                                <span class="brochure-text">Premium Product Catalog</span>
+                                <span class="brochure-text">Premium Catalog</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 6: Contact Us -->
+            <!-- Slide 6: Contact -->
             <div class="slide" id="slide6">
                 <div class="slide-number">06</div>
                 <div class="content-wrapper">
@@ -950,6 +930,7 @@
                         <p class="slide-subtitle">Get in touch with us for your architectural needs</p>
                         
                         <div class="contact-grid">
+                            <!-- Contact cards... (same as before) -->
                             <div class="contact-card">
                                 <div class="contact-icon-wrapper">
                                     <i class="fas fa-phone-alt contact-icon"></i>
@@ -1011,48 +992,43 @@
             <div class="slide" id="slide7">
                 <div class="slide-number">07</div>
                 <div class="content-wrapper">
-                    <div class="hero-content">
-                        <h1 class="hero-logo" style="font-size: 4.5rem;">THANK YOU</h1>
-                        <div class="hero-tagline" style="font-size: 1.8rem; margin-bottom: 2rem;">For Your Time</div>
+                    <div class="thank-you-content">
+                        <h1 class="hero-logo" style="font-size: 3.5rem; margin-bottom: 1rem;">THANK YOU</h1>
+                        <div class="hero-tagline" style="font-size: 1.5rem; margin-bottom: 2rem;">For Your Time</div>
                         
-                        <h2 class="slide-title" style="margin-bottom: 3rem;">IDAGUNJI ENTERPRISES</h2>
+                        <h2 class="slide-title" style="margin-bottom: 2rem;">IDAGUNJI ENTERPRISES</h2>
                         
-                        <div style="text-align: center; max-width: 800px;">
-                            <p style="font-size: 1.5rem; color: var(--secondary); margin-bottom: 2rem; line-height: 1.6;">
-                                Your trusted partner for premium architectural solutions
+                        <p style="font-size: 1.3rem; color: var(--secondary); margin-bottom: 3rem; max-width: 800px; line-height: 1.6;">
+                            Your trusted partner for premium architectural solutions
+                        </p>
+                        
+                        <div class="thank-you-icons">
+                            <div class="thank-you-icon">
+                                <i class="fas fa-award"></i>
+                                <p>Quality Excellence</p>
+                            </div>
+                            
+                            <div class="thank-you-icon">
+                                <i class="fas fa-handshake"></i>
+                                <p>Customer Commitment</p>
+                            </div>
+                            
+                            <div class="thank-you-icon">
+                                <i class="fas fa-clock"></i>
+                                <p>Timely Delivery</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(210, 180, 140, 0.3);">
+                            <p style="font-size: 1.5rem; color: var(--light); font-weight: 700; margin-bottom: 0.5rem;">
+                                +91 99000 99144
                             </p>
-                            
-                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;">
-                                <div>
-                                    <div style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;">
-                                        <i class="fas fa-award"></i>
-                                    </div>
-                                    <p style="font-weight: 600; color: var(--light);">Quality Excellence</p>
-                                </div>
-                                
-                                <div>
-                                    <div style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;">
-                                        <i class="fas fa-handshake"></i>
-                                    </div>
-                                    <p style="font-weight: 600; color: var(--light);">Customer Commitment</p>
-                                </div>
-                                
-                                <div>
-                                    <div style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem;">
-                                        <i class="fas fa-clock"></i>
-                                    </div>
-                                    <p style="font-weight: 600; color: var(--light);">Timely Delivery</p>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 2px solid rgba(210, 180, 140, 0.3);">
-                                <p style="font-size: 1.8rem; color: var(--light); font-weight: 700; margin-bottom: 1rem;">
-                                    +91 99000 99144
-                                </p>
-                                <p style="font-size: 1.2rem; color: var(--gray);">
-                                    info@idagunjienterprises.com
-                                </p>
-                            </div>
+                            <p style="font-size: 1.1rem; color: var(--gray); margin-bottom: 0.5rem;">
+                                info@idagunjienterprises.com
+                            </p>
+                            <p style="font-size: 1rem; color: var(--secondary);">
+                                Serving Pan-India with Architectural Excellence
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1076,7 +1052,7 @@
     </div>
 
     <script>
-        // Main Presentation System for Laptop
+        // Main Presentation System
         class LaptopPresentation {
             constructor() {
                 this.slidesGrid = document.getElementById('slidesGrid');
@@ -1094,7 +1070,6 @@
                 this.updateProgress();
                 this.updateCounter();
                 this.loadGalleryImages();
-                this.hideNavHint();
             }
             
             createSlideIndicators() {
@@ -1175,25 +1150,6 @@
                         }
                     }, 50);
                 }, { passive: true });
-                
-                // Touch gestures for touchscreen laptops
-                let touchStartY = 0;
-                document.addEventListener('touchstart', (e) => {
-                    touchStartY = e.touches[0].clientY;
-                }, { passive: true });
-                
-                document.addEventListener('touchend', (e) => {
-                    const touchEndY = e.changedTouches[0].clientY;
-                    const diff = touchStartY - touchEndY;
-                    
-                    if (Math.abs(diff) > 50) {
-                        if (diff > 0) {
-                            this.nextSlide();
-                        } else {
-                            this.prevSlide();
-                        }
-                    }
-                }, { passive: true });
             }
             
             goToSlide(index) {
@@ -1202,7 +1158,7 @@
                 this.isAnimating = true;
                 this.currentSlide = index;
                 const transformValue = -this.currentSlide * 100;
-                this.slidesGrid.style.transform = `translateX(${transformValue}%)`;
+                this.slidesGrid.style.transform = `translateX(${transformValue}vw)`;
                 
                 this.updateIndicators();
                 this.updateProgress();
@@ -1246,7 +1202,6 @@
             }
             
             loadGalleryImages() {
-                // Gallery descriptions
                 const descriptions = [
                     "Modern Commercial Building Facade",
                     "Structural Glazing Installation",
@@ -1306,29 +1261,13 @@
                     card.innerHTML = `
                         <div class="gallery-placeholder">
                             Project ${photoNumber}<br>
-                            <small style="font-weight: normal; margin-top: 0.5rem; font-size: 1rem;">${description}</small>
+                            <small style="font-weight: normal; margin-top: 0.3rem; font-size: 0.9rem;">${description}</small>
                         </div>
                         ${card.innerHTML}
                     `;
                 };
                 img.src = `gallery${photoNumber}.jpg`;
             }
-            
-            hideNavHint() {
-                // Hide navigation hint after 10 seconds
-                setTimeout(() => {
-                    const hint = document.getElementById('navHint');
-                    hint.style.opacity = '0';
-                    setTimeout(() => {
-                        hint.style.display = 'none';
-                    }, 1000);
-                }, 10000);
-            }
-        }
-        
-        // Gallery Image View
-        function viewGalleryImage(photoNumber, description) {
-            alert(`Viewing Project ${photoNumber}\n\n${description}\n\nImage: gallery${photoNumber}.jpg`);
         }
         
         // PDF Viewer Functions
@@ -1336,27 +1275,24 @@
             document.getElementById('pdfTitle').textContent = title;
             document.getElementById('pdfEmbed').src = pdfName;
             document.getElementById('pdfViewer').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
         }
         
         function closePDFViewer() {
             document.getElementById('pdfViewer').style.display = 'none';
             document.getElementById('pdfEmbed').src = '';
-            document.body.style.overflow = 'hidden';
         }
         
-        // Close PDF viewer when clicking outside or pressing ESC
+        // Close PDF viewer when clicking outside
         document.getElementById('pdfViewer').addEventListener('click', function(e) {
             if (e.target === this) {
                 closePDFViewer();
             }
         });
         
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.getElementById('pdfViewer').style.display === 'flex') {
-                closePDFViewer();
-            }
-        });
+        // Gallery Image View
+        function viewGalleryImage(photoNumber, description) {
+            alert(`Viewing Project ${photoNumber}\n\n${description}\n\nImage: gallery${photoNumber}.jpg`);
+        }
         
         // Initialize presentation
         let presentation;
@@ -1365,11 +1301,10 @@
             window.presentation = presentation;
         });
         
-        // Prevent context menu on images
-        document.addEventListener('contextmenu', (e) => {
-            if (e.target.tagName === 'IMG' || e.target.className.includes('gallery')) {
-                e.preventDefault();
-                return false;
+        // Close PDF with ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('pdfViewer').style.display === 'flex') {
+                closePDFViewer();
             }
         });
     </script>
